@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self';">
     <meta charset="UTF-8">
     <title>Sobot Rimulator</title>
   </head>
   <body>
     <h1>Sobot Rimulator</h1>
     Chamando Python : <span id="python-text"></span>
+    
+    <br>
+
+    <canvas id="myCanvas">
+      Your browser does not support the canvas tag.
+    </canvas>
+
+
   </body>
 
   <script src='./renderer.js'></script>
