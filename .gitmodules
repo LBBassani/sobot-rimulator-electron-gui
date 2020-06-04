@@ -1,0 +1,4 @@
+[submodule "PyNode"]
+	path = PyNode
+	url = https://github.com/LBBassani/PyNode.git
+	branch = import-python3.7

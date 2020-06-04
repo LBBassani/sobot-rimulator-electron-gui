@@ -1,0 +1,21 @@
+{
+  "name": "srimulatorelectron",
+  "version": "0.0.1",
+  "description": "Electron GUI for Sobot Rimulator by Nick McCrea",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Lorena B Bassani",
+  "license": "GPLv3",
+  "dependencies": {
+    "@fridgerator/pynode": "file:PyNode",
+    "bindings": "^1.5.0",
+    "electron": "^9.0.2",
+    "node-addon-api": "^3.0.0",
+    "node-gyp": "^7.0.0",
+    "python-shell": "^2.0.1",
+    "zeromq": "^6.0.0-beta.6"
+  }
+}

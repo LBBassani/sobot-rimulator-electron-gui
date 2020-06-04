@@ -1,0 +1,7 @@
+*.pyc
+*.pdf
+*.teste.pyc
+*.teste.py
+.vscode
+node_modules
+venv
