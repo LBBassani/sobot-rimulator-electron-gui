@@ -3,6 +3,6 @@
 	url = https://github.com/LBBassani/PyNode.git
 	branch = import-python3.7
 [submodule "motion-planning-simulation"]
-	path = motion-planning-simulation
+	path = pysrimulator/motion-planning-simulation
 	url = https://github.com/LBBassani/motion-planning-simulation.git
 	branch = master
