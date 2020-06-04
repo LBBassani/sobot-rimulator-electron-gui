@@ -34,7 +34,7 @@ for (let i = 1; i < 6; i++) {
 }
 
 //Turn transparency on
-function draw_rect(context, x, y, l, h, color, alpha){
+function draw_rect(context, x, y, l, h, color, alpha = 1){
   context.beginPath();
   context.globalAlpha = alpha;
   context.fillStyle = color;
@@ -42,7 +42,7 @@ function draw_rect(context, x, y, l, h, color, alpha){
   context.closePath();
 }
 
-function stroke_rect(context, x, y, l, h, color, lineWidth, alpha){
+function stroke_rect(context, x, y, l, h, color, lineWidth = 1, alpha = 1){
   context.beginPath();
   context.globalAlpha = alpha;
   context.lineWidth = lineWidth;
@@ -51,7 +51,7 @@ function stroke_rect(context, x, y, l, h, color, lineWidth, alpha){
   context.closePath();
 }
 
-function draw_circle(context, xc, yc, radius, color, alpha){
+function draw_circle(context, xc, yc, radius, color, alpha = 1){
   context.beginPath();
   context.fillStyle = color;
   context.globalAlpha = alpha;
@@ -60,7 +60,7 @@ function draw_circle(context, xc, yc, radius, color, alpha){
   context.closePath();
 }
 
-function stroke_circle(context, xc, yc, radius, color, lineWidth, alpha){
+function stroke_circle(context, xc, yc, radius, color, lineWidth = 1, alpha = 1){
   context.beginPath();
   context.strokeStyle = color;
   context.globalAlpha = alpha;
@@ -70,7 +70,56 @@ function stroke_circle(context, xc, yc, radius, color, lineWidth, alpha){
   context.closePath();
 }
 
-function stroke_line(context, xi, yi, xf, yf, color, lineWidth , alpha){
+function draw_poly(context, poly, color, alpha = 1){
+  if (poly.length <= 0) return;
+  context.beginPath();
+  context.globalAlpha = alpha;
+  context.fillStyle = color;
+
+  //Primeiro Ponto do poligono
+  pontoAtual = poly[0];
+  context.moveTo(pontoAtual[0], pontoAtual[1]);
+
+  //Liga os pontos do poligono
+  for (i = 1; i < poly.length; i++){
+    pontoAtual = poly[i];
+    context.lineTo(pontoAtual[0], pontoAtual[1]);
+  }
+
+  //Fecha o poligono
+  pontoAtual = poly[0];
+  context.lineTo(pontoAtual[0], pontoAtual[1]);
+
+  context.fill();
+  context.closePath();
+}
+
+function stroke_poly(context, poly, color, lineWidth = 1, alpha = 1){
+  if (poly.length <= 0) return;
+  context.beginPath();
+  context.globalAlpha = alpha;
+  context.strokeStyle = color;
+  context.lineWidth = lineWidth;
+
+  //Primeiro Ponto do poligono
+  pontoAtual = poly[0];
+  context.moveTo(pontoAtual[0], pontoAtual[1]);
+
+  //Liga os pontos do poligono
+  for (i = 1; i < poly.length; i++){
+    pontoAtual = poly[i];
+    context.lineTo(pontoAtual[0], pontoAtual[1]);
+  }
+
+  //Fecha o poligono
+  pontoAtual = poly[0];
+  context.lineTo(pontoAtual[0], pontoAtual[1]);
+
+  context.stroke();
+  context.closePath();
+}
+
+function stroke_line(context, xi, yi, xf, yf, color, lineWidth = 1, alpha = 1){
   context.beginPath();
   context.globalAlpha = alpha;
   context.strokeStyle = color;
@@ -81,54 +130,5 @@ function stroke_line(context, xi, yi, xf, yf, color, lineWidth , alpha){
   context.closePath();
 }
 
-function stroke_poly(context, poly, color, lineWidth, alpha){
-  if (poly.length <= 0) return;
-  context.beginPath();
-  context.globalAlpha = alpha;
-  context.strokeStyle = color;
-  context.lineWidth = lineWidth;
-
-  //Primeiro Ponto do poligono
-  pontoAtual = poly[0];
-  context.moveTo(pontoAtual[0], pontoAtual[1]);
-
-  //Liga os pontos do poligono
-  for (i = 1; i < poly.length; i++){
-    pontoAtual = poly[i];
-    context.lineTo(pontoAtual[0], pontoAtual[1]);
-  }
-
-  //Fecha o poligono
-  pontoAtual = poly[0];
-  context.lineTo(pontoAtual[0], pontoAtual[1]);
-
-  context.stroke();
-  context.closePath();
-}
-
-function draw_poly(context, poly, color, alpha){
-  if (poly.length <= 0) return;
-  context.beginPath();
-  context.globalAlpha = alpha;
-  context.fillStyle = color;
-
-  //Primeiro Ponto do poligono
-  pontoAtual = poly[0];
-  context.moveTo(pontoAtual[0], pontoAtual[1]);
-
-  //Liga os pontos do poligono
-  for (i = 1; i < poly.length; i++){
-    pontoAtual = poly[i];
-    context.lineTo(pontoAtual[0], pontoAtual[1]);
-  }
-
-  //Fecha o poligono
-  pontoAtual = poly[0];
-  context.lineTo(pontoAtual[0], pontoAtual[1]);
-
-  context.fill();
-  context.closePath();
-}
-
-stroke_poly(ctx, [[10.5,20], [50.5, 3.4], [70.0, 45.5], [120, 70], [79, 29]], "red", 1, 0.8)
-draw_poly(ctx, [[20.6, 40], [50, 50], [64, 78]], "red", 0.5);
+stroke_poly(ctx, [[10.5,20], [50.5, 3.4], [70.0, 45.5], [120, 70], [79, 29]], "red");
+draw_poly(ctx, [[20.6, 40], [50, 50], [64, 78]], "red");
