@@ -5,5 +5,10 @@ pynode.appendSysPath('./pysrimulator/')
 pynode.openFile('api')
 pynode.call('echo', "Eu chamei uma função Python!!!!!", (err, result) => {
     if (err) return console.log('error : ', err)
-    else return console.log(result) // true
+    else return replaceText('python-text',result) // true
   })
+
+const replaceText = (selector, text) => {
+    const element = document.getElementById(selector)
+    if (element) element.innerText = text
+}
