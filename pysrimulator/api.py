@@ -7,12 +7,14 @@ def echo(text):
 from simulation.rimulatorcore.srimulatorcore.rimulators_samples.rimulator import Rimulator
 from simulation.rimulatorcore.srimulatorcore.gui.viewer import Viewer
 from simulation.rimulatorcore.srimulatorcore.sobots_samples.kheperaiii.kheperaiii import Kheperaiii
+from random import random
 
 rimulator = None
 
 def new_rimulator():
     global rimulator
-    rimulator = Rimulator([(Kheperaiii, [1.0, 1.0])])
+    init_pos = [random(), random()]
+    rimulator = Rimulator([(Kheperaiii, init_pos)])
     rimulator.add_viewer(Viewer(rimulator))
     rimulator.initialize_sim(True)
     return True
