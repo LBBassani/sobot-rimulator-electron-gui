@@ -4,9 +4,9 @@ def echo(text):
     """echo any text"""
     return text
 
-from srimulatorcore.rimulators_samples.rimulator import Rimulator
-from srimulatorcore.gui.viewer import Viewer
-from srimulatorcore.sobots_samples.kheperaiii.kheperaiii import Kheperaiii
+from simulation.rimulatorcore.srimulatorcore.rimulators_samples.rimulator import Rimulator
+from simulation.rimulatorcore.srimulatorcore.gui.viewer import Viewer
+from simulation.rimulatorcore.srimulatorcore.sobots_samples.kheperaiii.kheperaiii import Kheperaiii
 
 rimulator = None
 

@@ -189,6 +189,26 @@ function stroke_line(context, xi, yi, xf, yf, color, lineWidth = 1, alpha = 1){
     context.closePath();
 }
 
+function stroke_segmented_line(context, line, color, lineWidth = 1, alpha = 1){
+    if (line.length <= 0) return;
+    context.beginPath();
+    context.globalAlpha = alpha;
+    context.strokeStyle = color;
+    context.lineWidth = lineWidth;
+
+    pontoAtual = line[0];
+    context.moveTo(pontoAtual[0], pontoAtual[1]);
+
+    //Liga os pontos do poligono
+    for (i = 1; i < line.length; i++){
+        pontoAtual = line[i];
+        context.lineTo(pontoAtual[0], pontoAtual[1]);
+    }
+    
+    context.stroke();
+    context.closePath();
+}
+
 /* Exporta funções do módulo */
 exports.stroke_poly = stroke_poly
 exports.draw_poly = draw_poly
@@ -197,3 +217,4 @@ exports.draw_rect = draw_rect
 exports.stroke_circle = stroke_circle
 exports.draw_circle = draw_circle
 exports.stroke_line = stroke_line
+exports.stroke_segmented_line = stroke_segmented_line
