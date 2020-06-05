@@ -189,6 +189,17 @@ function stroke_line(context, xi, yi, xf, yf, color, lineWidth = 1, alpha = 1){
     context.closePath();
 }
 
+/* Nome da função :     stroke_line
+ * Intenção da função:  desenhar linha em tag canvas
+ * Pré-requisitos:      nenhum
+ * Efeitos colaterais:  desenha linha composta de diversos pontos na região compreendida pela tag
+ * Parâmetros:          context : canvas context :: 2d
+ *                      line : vetor de pontos no formato [ [ x1, y1 ], [ x2, y2 ] , ... [ xn, yn ]]
+ *                      color : cor a ser preenchida a figura
+ *                      lineWidth (default = 1) : grossura da linha
+ *                      alpha (default = 1) : opacidade da linha
+ * Retorno:             nenhum
+ */
 function stroke_segmented_line(context, line, color, lineWidth = 1, alpha = 1){
     if (line.length <= 0) return;
     context.beginPath();
