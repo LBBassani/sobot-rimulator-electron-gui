@@ -67,18 +67,19 @@ function draw_frame(frame){
   console.log(frame);
   frame_ctx.clearRect(- canvas.width/2 , - canvas.height/2, canvas.width, canvas.height);
   for ( let formas of frame ){
+    color = formas.color.split(" ").join("");
     if ( formas.type == "circle" ){
       // TODO : imprime circulo
-      illustrator.draw_circle(frame_ctx, formas.pos[0], formas.pos[1], formas.radius, formas.fontcolor, formas.alpha );
+      illustrator.draw_circle(frame_ctx, formas.pos[0], formas.pos[1], formas.radius, color, formas.alpha );
     }else if ( formas.type == "polygons" ){
       // TODO : imprimir poligonos
       for( let poly of formas.polygons ){
-        illustrator.draw_poly(frame_ctx, poly, formas.color, formas.alpha);
+        illustrator.draw_poly(frame_ctx, poly, color, formas.alpha);
       }
     }else if ( formas.type == "lines" ){
       // TODO : imprimir linhas
       for ( let line of formas.lines ){
-          illustrator.stroke_segmented_line(frame_ctx, line, formas.color, formas.linewidth, formas.alpha);
+          illustrator.stroke_segmented_line(frame_ctx, line, color, formas.linewidth, formas.alpha);
       }
     }else{
       console.log("Forma desconhecida")
