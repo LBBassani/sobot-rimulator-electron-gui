@@ -99,10 +99,10 @@ class SimulationControl {
         
     }
     
-    reset_sim ( pynode ) {
+    reset_sim ( pynode, canvas ) {
         
         this.pause_sim(pynode);
-        this.initialize_sim(pynode);
+        this.initialize_sim(pynode, canvas);
         
     }
     
@@ -155,7 +155,7 @@ class SimulationControl {
         
     }
     
-    set_zoom ( zoom_valor , canvas ) {
+    set_zoom ( pynode,  zoom_valor , canvas ) {
         
         if (zoom_valor > this.zoom_min && zoom_valor < this.zoom_max ){
             let frame_context = canvas.getContext("2d");
@@ -163,18 +163,20 @@ class SimulationControl {
             frame_context.scale(zoom_valor, zoom_valor);
             this.zoom = zoom_valor;
         }
+
+        this.draw_world(pynode, canvas);
         
     }
     
-    zoom_in ( canvas ) {
+    zoom_in ( pynode, canvas ) {
         
-        this.set_zoom(this.zoom + 10, canvas);
+        this.set_zoom(pynode, this.zoom + 10, canvas);
         
     }
     
-    zoom_out ( canvas) {
+    zoom_out ( pynode, canvas) {
         
-        this.set_zoom(this.zoom - 10, canvas);
+        this.set_zoom(pynode, this.zoom - 10, canvas);
         
     }
 }
