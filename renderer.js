@@ -71,9 +71,22 @@ frame_ctx.scale(50, 50);
 // Conecta o teste ao botão de teste
 botao = document.getElementById("button-pyteste");
 botao.addEventListener("click", () => controller.play_sim(pynode, canvas));
+//botao.addEventListener("click", () => new_frame(pynode, canvas))
+
+botao = document.getElementById("play-sim");
+botao.addEventListener("click", () => controller.play_sim(pynode, canvas));
+
+botao = document.getElementById("stop-sim");
+botao.addEventListener("click", () => controller.pause_sim(pynode));
+
+botao = document.getElementById("step-sim");
+botao.addEventListener("click", () => controller.step_sim_once(pynode, canvas));
+
+botao = document.getElementById("reset-sim");
+botao.addEventListener("click", () => controller.reset_sim(pynode, canvas));
 
 botao = document.getElementById("zoom-in");
-botao.addEventListener("click", () => controller.zoom_in(canvas));
+botao.addEventListener("click", () => controller.zoom_in(pynode, canvas));
 
 botao = document.getElementById("zoom-out");
-botao.addEventListener("click", () => controller.zoom_out(canvas));
+botao.addEventListener("click", () => controller.zoom_out(pynode, canvas));
