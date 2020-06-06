@@ -1,12 +1,12 @@
 
 /* Importa módulos */
-const illustrator = require("./js/illustrator.js");
+const illustrator = require("./pysrimulator/illustrator.js");
 const pynode = require('@fridgerator/pynode');
-const viewer = require("./js/viewer");
+const viewer = require("./pysrimulator/viewer");
+const controller = require("./pysrimulator/simulationctrl");
 
 // Abre arquivo api do pysrimulator e ganha acesso as funções (python) nele
-pynode.startInterpreter();
-pynode.dlOpen('libpython3.7.so');
+
 pynode.startInterpreter();
 pynode.appendSysPath('./pysrimulator/');
 pynode.openFile('api');
@@ -18,10 +18,10 @@ var rimulator = false;
 
 // Chama função python echo para testar a integração python-node via PyNode
 function pyEcho(echo, replace_id){
-pynode.call('echo', echo, (err, result) => {
-    if (err) return console.log('error : ', err)
-    else return replaceText(replace_id, result) // true
-})
+  pynode.call('echo', echo, (err, result) => {
+      if (err) return console.log('error : ', err)
+      else return replaceText(replace_id, result) // true
+  })
 }
 
 // Função que substitui o texto na tela
@@ -31,19 +31,14 @@ const replaceText = (selector, text) => {
 }
 
 // Função que desenha nova frame na tela
-function new_frame(){
+function new_frame(pynode, canvas){
   if (rimulator) {
-    pyEcho("Recebendo frame", "py-estado");
-    pynode.call("get_frame", (err, result) =>{
-      if(err) return console.error(err);
-      else return viewer.draw_frame(document.getElementById("frame-canvas"), result);
-    });
+    pyEcho("Rodando simulação", "py-estado");
+    controller.step_sim_once(pynode, canvas)
   }else{
     pyEcho("Criando nova simulação", "py-estado");
-    pynode.call("new_rimulator", (err, result)=>{
-      if (err) return console.error(err);
-      else return rimulator = result;
-    } );
+    controller.new_simulator(pynode)
+    rimulator = true
   }
 }
 
@@ -56,7 +51,6 @@ pyEcho("Desenhando frame de simulação", "title-pyteste");
 var canvas = document.getElementById("frame-canvas");
 var frame_ctx = canvas.getContext("2d");
 frame_ctx.translate(canvas.width/2,canvas.height/2);
-frame_ctx.scale(100, 100);
 
 // Desenha diversos circulos com gradiente no canvas aberto
 for (let i = 1; i < 6; i++) {
@@ -69,6 +63,16 @@ for (let i = 1; i < 6; i++) {
   }
 }
 
+controller.new_simulator(pynode)
+
+frame_ctx.scale(50, 50);
+
 // Conecta o teste ao botão de teste
 botao = document.getElementById("button-pyteste");
-botao.addEventListener("click", new_frame);
+botao.addEventListener("click", () => controller.play_sim(pynode));
+
+botao = document.getElementById("zoom-in");
+botao.addEventListener("click", controller.zoom_in);
+
+botao = document.getElementById("zoom-out");
+botao.addEventListener("click", controller.zoom_out);
