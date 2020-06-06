@@ -13,7 +13,7 @@ pynode.openFile('api');
 // Variável de controle do simulador
 var rimulator = false;
 var controller = new SimulationControl()
-var illustrator = new Illustrator()
+// var illustrator = new Illustrator()
 
 /* Definições de funções */
 
@@ -60,7 +60,7 @@ for (let i = 1; i < 6; i++) {
         0,
         ${Math.floor(255 - 42.5 * i)},
         ${Math.floor(255 - 42.5 * j)})`;
-    illustrator.stroke_circle(frame_ctx, 12.5 + j * 25, 12.5 + i * 25, 10, strokeStyle, 1, 1 );
+    Illustrator.stroke_circle(frame_ctx, 12.5 + j * 25, 12.5 + i * 25, 10, strokeStyle, 1, 1 );
   }
 }
 

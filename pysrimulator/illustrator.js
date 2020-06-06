@@ -1,13 +1,14 @@
 /* Sobot Rimulator Electron GUI
-* Nome do módulo :     Illustrator
-* Ano de criação:      2020
-* Descrição do módulo: Módulo com funções de desenho em tag canvas
-* Versão:              1.0
-* Membros:             Lorena "Ino" Bassani
+* Nome do módulo :      Illustrator
+* Ano de criação:       2020
+* Descrição do módulo:  Módulo com funções de desenho em tag canvas
+* Versão:               2.0
+* Membros:              Alan "Alpha" Felix
+                        Lorena "Ino" Bassani
 */
 
 class Illustrator {
-    /* Nome da função :     draw_rect
+    /* Nome da função :    draw_rect
     * Intenção da função : desenhar retangulo em tag canvas
     * Pré-requisitos :     nenhum
     * Efeitos colaterais : desenha retangulo em região compreendida pela tag
@@ -20,7 +21,7 @@ class Illustrator {
     *                      alpha (default = 1) : opacidade da linha
     * Retorno :            nenhum
     */ 
-    draw_rect(context, x, y, l, h, color, alpha = 1){
+    static draw_rect(context, x, y, l, h, color, alpha = 1){
         context.beginPath();
         context.globalAlpha = alpha;
         context.fillStyle = color;
@@ -28,7 +29,7 @@ class Illustrator {
         context.closePath();
     }
     
-    /* Nome da função :     stroke_rect
+    /* Nome da função :    stroke_rect
     * Intenção da função : contornar retangulo em tag canvas
     * Pré-requisitos :     nenhum
     * Efeitos colaterais : contorna retangulo em região compreendida pela tag
@@ -42,7 +43,7 @@ class Illustrator {
     *                      alpha (default = 1) : opacidade da linha
     * Retorno :            nenhum
     */
-    stroke_rect(context, x, y, l, h, color, lineWidth = 1, alpha = 1){
+    static stroke_rect(context, x, y, l, h, color, lineWidth = 1, alpha = 1){
         context.beginPath();
         context.globalAlpha = alpha;
         context.lineWidth = lineWidth;
@@ -51,7 +52,7 @@ class Illustrator {
         context.closePath();
     }
     
-    /* Nome da função :     draw_circle
+    /* Nome da função :    draw_circle
     * Intenção da função : desenhar circulo em tag canvas
     * Pré-requisitos :     nenhum
     * Efeitos colaterais : desenha circulo em região compreendida pela tag
@@ -63,7 +64,7 @@ class Illustrator {
     *                      alpha (default = 1) : opacidade da linha
     * Retorno :            nenhum
     */
-    draw_circle(context, xc, yc, radius, color, alpha = 1){
+    static draw_circle(context, xc, yc, radius, color, alpha = 1){
         context.beginPath();
         context.fillStyle = color;
         context.globalAlpha = alpha;
@@ -72,7 +73,7 @@ class Illustrator {
         context.closePath();
     }
     
-    /* Nome da função :     stroke_circle
+    /* Nome da função :    stroke_circle
     * Intenção da função : contornar circulo em tag canvas 
     * Pré-requisitos :     nenhum
     * Efeitos colaterais : contorna circulo em região compreendida pela tag
@@ -85,7 +86,7 @@ class Illustrator {
     *                      alpha (default = 1) : opacidade da linha
     * Retorno :            nenhum
     */
-    stroke_circle(context, xc, yc, radius, color, lineWidth = 1, alpha = 1){
+    static stroke_circle(context, xc, yc, radius, color, lineWidth = 1, alpha = 1){
         context.beginPath();
         context.strokeStyle = color;
         context.globalAlpha = alpha;
@@ -95,7 +96,7 @@ class Illustrator {
         context.closePath();
     }
     
-    /* Nome da função :     draw_poly
+    /* Nome da função :    draw_poly
     * Intenção da função : desenhar um poligono em tag canvas
     * Pré-requisitos :     nenhum
     * Efeitos colaterais : desenho de um poligono em região compreendida pela tag
@@ -105,7 +106,7 @@ class Illustrator {
     *                      alpha (default = 1) : opacidade da linha
     * Retorno:             nenhum
     */
-    draw_poly(context, poly, color, alpha = 1){
+    static draw_poly(context, poly, color, alpha = 1){
         if (poly.length <= 0) return;
         context.beginPath();
         context.globalAlpha = alpha;
@@ -129,7 +130,7 @@ class Illustrator {
         context.closePath();
     }
     
-    /* Nome da função :     stroke_poly
+    /* Nome da função :    stroke_poly
     * Intenção da função : contornar um poligono em tag canvas
     * Pré-requisitos :     nenhum
     * Efeitos colaterais : contorna um poligono na região compreendida pela tag
@@ -140,7 +141,7 @@ class Illustrator {
     *                      alpha (default = 1) : opacidade da linha
     * Retorno :            nenhum
     */
-    stroke_poly(context, poly, color, lineWidth = 1, alpha = 1){
+    static stroke_poly(context, poly, color, lineWidth = 1, alpha = 1){
         if (poly.length <= 0) return;
         context.beginPath();
         context.globalAlpha = alpha;
@@ -165,7 +166,7 @@ class Illustrator {
         context.closePath();
     }
     
-    /* Nome da função :     stroke_line
+    /* Nome da função :    stroke_line
     * Intenção da função:  desenhar linha em tag canvas
     * Pré-requisitos:      nenhum
     * Efeitos colaterais:  desenha linha na região compreendida pela tag
@@ -179,7 +180,7 @@ class Illustrator {
     *                      alpha (default = 1) : opacidade da linha
     * Retorno:             nenhum
     */
-    stroke_line(context, xi, yi, xf, yf, color, lineWidth = 1, alpha = 1){
+    static stroke_line(context, xi, yi, xf, yf, color, lineWidth = 1, alpha = 1){
         context.beginPath();
         context.globalAlpha = alpha;
         context.strokeStyle = color;
@@ -190,7 +191,7 @@ class Illustrator {
         context.closePath();
     }
     
-    /* Nome da função :     stroke_segmented_line
+    /* Nome da função :    stroke_segmented_line
     * Intenção da função:  desenhar linha em tag canvas
     * Pré-requisitos:      nenhum
     * Efeitos colaterais:  desenha linha composta de diversos pontos na região compreendida pela tag
@@ -201,7 +202,7 @@ class Illustrator {
     *                      alpha (default = 1) : opacidade da linha
     * Retorno:             nenhum
     */
-    stroke_segmented_line(context, line, color, lineWidth = 1, alpha = 1){
+    static stroke_segmented_line(context, line, color, lineWidth = 1, alpha = 1){
         if (line.length <= 0) return;
         context.beginPath();
         context.globalAlpha = alpha;

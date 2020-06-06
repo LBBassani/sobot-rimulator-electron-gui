@@ -6,6 +6,7 @@
  * Membros:             Lorena "Ino" Bassani
  */
 
+const {Illustrator} = require("./illustrator")
 class Viewer {
 
     /* Nome da função :    draw_frame
@@ -22,14 +23,14 @@ class Viewer {
         for ( let formas of frame ){
             let color = formas.color.split(" ").join("");
             if ( formas.type == "circle" ){
-                illustrator.draw_circle(frame_ctx, formas.pos[0], formas.pos[1], formas.radius, color, formas.alpha );
+                Illustrator.draw_circle(frame_ctx, formas.pos[0], formas.pos[1], formas.radius, color, formas.alpha );
             }else if ( formas.type == "polygons" ){
                 for( let poly of formas.polygons ){
-                illustrator.draw_poly(frame_ctx, poly, color, formas.alpha);
+                Illustrator.draw_poly(frame_ctx, poly, color, formas.alpha);
                 }
             }else if ( formas.type == "lines" ){
                 for ( let line of formas.lines ){
-                    illustrator.stroke_segmented_line(frame_ctx, line, color, formas.linewidth, formas.alpha);
+                    Illustrator.stroke_segmented_line(frame_ctx, line, color, formas.linewidth, formas.alpha);
                 }
             }else{
                 console.log("Forma desconhecida")
