@@ -35,8 +35,12 @@ def get_frame():
 
 def step_sim():
     global rimulator
-    rimulator.step_sim_once()
-    return draw_world()
+    try:
+        rimulator.step_sim_once()
+    except _ :
+        pass
+    finally:
+        return draw_world()
 
 def initialize_sim( random = False ):
     global rimulator
