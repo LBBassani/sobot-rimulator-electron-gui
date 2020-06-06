@@ -3,7 +3,7 @@
 const illustrator = require("./pysrimulator/illustrator.js");
 const pynode = require('@fridgerator/pynode');
 const viewer = require("./pysrimulator/viewer");
-const controller = require("./pysrimulator/simulationctrl");
+const {SimulationControl} = require("./pysrimulator/simulationctrl");
 
 // Abre arquivo api do pysrimulator e ganha acesso as funções (python) nele
 
@@ -13,6 +13,7 @@ pynode.openFile('api');
 
 // Variável de controle do simulador
 var rimulator = false;
+var controller = new SimulationControl()
 
 /* Definições de funções */
 
@@ -72,7 +73,7 @@ botao = document.getElementById("button-pyteste");
 botao.addEventListener("click", () => controller.play_sim(pynode));
 
 botao = document.getElementById("zoom-in");
-botao.addEventListener("click", controller.zoom_in);
+botao.addEventListener("click", () => controller.zoom_in());
 
 botao = document.getElementById("zoom-out");
-botao.addEventListener("click", controller.zoom_out);
+botao.addEventListener("click", () => controller.zoom_out());
