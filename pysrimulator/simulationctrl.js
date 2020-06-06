@@ -1,5 +1,5 @@
 
-const viewer = require("./viewer");
+const {Viewer} = require("./viewer");
 
 class SimulationControl {
     // Variável de controle do simulador
@@ -34,7 +34,7 @@ class SimulationControl {
         // Chama a função initialize_sim (python) e desenha a primeira frame na tela
         pynode.call( "initialize_sim", random , ( err, result ) => {
             if(err) return console.error(err);
-            else return viewer.draw_frame(canvas, result);
+            else return Viewer.draw_frame(canvas, result);
         } );
         
     }
@@ -87,7 +87,7 @@ class SimulationControl {
         // Chama a função step_sim (python) que anda um passo de simulação
         pynode.call( "step_sim", ( err, result ) => {
             if ( err ) return console.error( err );
-            else return viewer.draw_frame(canvas, result);
+            else return Viewer.draw_frame(canvas, result);
         } );
         
     }
@@ -138,7 +138,7 @@ class SimulationControl {
         // Chama função draw_world (python) e desenha o mundo na tela
         pynode.call("draw_world", (err, result) =>{
             if(err) return console.error(err);
-            else return viewer.draw_frame(canvas, result);
+            else return Viewer.draw_frame(canvas, result);
         });
         
     }

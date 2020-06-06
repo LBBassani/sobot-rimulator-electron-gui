@@ -2,7 +2,6 @@
 /* Importa módulos */
 const illustrator = require("./pysrimulator/illustrator.js");
 const pynode = require('@fridgerator/pynode');
-const viewer = require("./pysrimulator/viewer");
 const {SimulationControl} = require("./pysrimulator/simulationctrl");
 
 // Abre arquivo api do pysrimulator e ganha acesso as funções (python) nele
